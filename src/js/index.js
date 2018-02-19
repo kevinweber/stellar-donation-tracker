@@ -23,7 +23,7 @@ function updateSummary() {
   server.loadAccount(CONFIG.accountId)
     .then((response) => {
       const balance = parseFloat(response.balances[0].balance).toFixed(2);
-      bind(amount)`${balance} lumens (XLM) contributed so far. Keep rocking :-)`;
+      bind(amount)`${balance} lumens (XLM) contributed so far. You rock :-)`;
     });
 }
 
