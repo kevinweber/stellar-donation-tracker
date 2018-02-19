@@ -1,0 +1,33 @@
+{
+  "private": true,
+  "name": "stellar-donation-tracker",
+  "version": "1.0.0",
+  "description": "Explore payments sent to a Stellar account. This is a simple interface to list the highest and most recent payments including the `Memo text` of a transaction, if provided.",
+  "scripts": {
+    "production": "NODE_ENV='production' npm run build -- -p",
+    "build": "webpack --progress --colors --config ./webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npm run build -- --watch"
+  },
+  "keywords": [],
+  "author": "Kevin Weber",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.0",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "promise-polyfill": "^7.0.0",
+    "stellar-sdk": "^0.8.0",
+    "whatwg-fetch": "^2.0.3"
+  }
+}

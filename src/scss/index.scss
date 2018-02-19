@@ -1,0 +1,151 @@
+@import './reset.scss';
+
+$_bg-white: #fdfdfd;
+$_bg-grey: #f3f3f3;
+$_color-grey: #ccc;
+$_color-black: rgb(44, 44, 41);
+
+html {
+  background-color: $_bg-white;
+  color: $_color-black;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1em;
+}
+
+a {
+  color: $_color-black;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+p {
+  line-height: 1.5em;
+}
+
+footer,
+header,
+section {
+  margin: 0 auto;
+  max-width: 740px;
+  padding: 2rem 1rem 1rem;
+}
+
+.teaser {
+  color: $_color-grey;
+  font-size: 0.75rem;
+}
+
+.info {
+  $_xPadding: 1rem;
+  background-color: $_bg-grey;
+  margin-left: -$_xPadding;
+  margin-top: $_xPadding;
+  padding: 1.3rem $_xPadding 1.1rem;
+  width: calc(100% + #{(2 * $_xPadding)});
+
+  p:first-of-type {
+    font-weight: bold;
+  }
+
+  p + p {
+    padding-top: 0.5rem;
+  }
+}
+
+h1,
+h2,
+h3 {
+  padding-bottom: 1rem;
+  margin: 10vh 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+ul {
+  margin-bottom: 2rem;
+}
+
+pre {
+  font-family: Monospace;
+  font-size: 0.9rem;
+  line-height: 3.3em;
+}
+
+code {
+  background-color: $_bg-white;
+  padding: 0.4rem 0.3rem;
+}
+
+li + li {
+  margin-top: 2rem;
+}
+
+li span {
+  display: block;
+
+  + span {
+    padding-top: 0.5rem;
+  }
+}
+
+.toplist {
+  counter-reset: rank;
+
+  li + li {
+    margin-top: 4rem;
+  }
+
+  li::before {
+    color: $_color-grey;
+    content: counter(rank) '.';
+    counter-increment: rank;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+    top: -0.3rem;
+  }
+
+  li:first-of-type::before {
+    font-size: 1.75rem;
+  }
+
+  li:nth-of-type(2)::before {
+    font-size: 1.5rem;
+  }
+
+  li:nth-of-type(3)::before {
+    font-size: 1.25rem;
+  }
+}
+
+.longlist {
+  li:last-of-type {
+    margin-bottom: 60vh;
+
+    &::after {
+      content: '"He who is satisfied with his lot is rich" – Tao Te Ching';
+      font-family: 'Indie Flower', cursive;
+      position: relative;
+      top: 28vh;
+    }
+  }
+}
+
+.memo {
+  font-family: 'Indie Flower', cursive;
+  font-size: 2rem;
+}
+
+.contribution {
+  color: $_color-grey;
+  font-size: 0.75rem;
+}
