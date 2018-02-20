@@ -68,6 +68,7 @@ npm run production
 - [ ] Provide input field to list donations for any account ID
 - [ ] Support displaying donations based on GET parameter for account address
 - [ ] Update Webpack to latest version
+- [ ] Replace hyperHTML with React or Preact
 - [ ] Provide alternative view for addresses on Stellar's [Testnet](https://www.stellar.org/developers/guides/concepts/test-net.html)
 - [ ] Exclude or mark payments from inflation pool
 - [ ] Add charts that visualize donation metrics, such as payments received per week, top donors and repeated payments from a single account
