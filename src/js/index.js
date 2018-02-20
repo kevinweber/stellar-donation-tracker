@@ -32,6 +32,7 @@ const boards = {
  */
 const board1 = document.querySelector('[data-id="board"]');
 const board2 = document.querySelector('[data-id="board-2"]');
+const accountIdInput = document.querySelector('input[data-account-id]');
 
 class DonationPage {
   constructor() {
@@ -72,6 +73,17 @@ class DonationPage {
 
   updatePayments() {
     STREAM_MANAGER.updateStream(this.state.accountId, this.handleIncomingTransaction.bind(this));
+  }
+
+  /**
+   * Input field where user can insert any account ID
+   */
+  updateInput(accountId = this.state.accountId) {
+    accountIdInput.setAttribute('placeholder', accountId);
+    accountIdInput.addEventListener('input', () => {
+      this.state.accountId = accountIdInput.value;
+      this.updatePayments(accountIdInput.value);
+    });
   }
 
   /**
