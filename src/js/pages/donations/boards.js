@@ -15,18 +15,23 @@ const board2 = document.querySelector('[data-id="board-2"]');
 export default class DonationBoards {
   constructor() {
     this.state = {
-      boards: BOARDS_INITIAL,
+      boards: Object.assign({}, BOARDS_INITIAL),
     };
 
     return {
       addEntry: this.addEntry.bind(this),
-      resetBoards: this.resetBoards.bind(this),
       updateBoards: this.updateBoards.bind(this),
+      resetBoards: this.resetBoards.bind(this),
     };
   }
 
   resetBoards() {
-    this.state.boards = BOARDS_INITIAL;
+    this.state.boards = Object.assign({}, BOARDS_INITIAL);
+
+    bind(board1)`
+    <span class="memo">Loading...</span>`;
+
+    bind(board2);
   }
 
   arrangeBoards() {

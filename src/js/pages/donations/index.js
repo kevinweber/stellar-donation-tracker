@@ -27,7 +27,7 @@ const accountIdInput = document.querySelector('input[data-account-id]');
 export default class DonationPage {
   constructor() {
     // Use `CONFIG` by as the default state but be aware that the state can change
-    this.state = CONFIG;
+    this.state = Object.assign({}, CONFIG);
 
     this.updatePayments();
     this.updateInput();
@@ -70,8 +70,14 @@ export default class DonationPage {
   updateInput(accountId = this.state.accountId) {
     accountIdInput.setAttribute('placeholder', accountId);
     accountIdInput.addEventListener('input', () => {
-      this.state.accountId = accountIdInput.value;
-      this.updatePayments(accountIdInput.value);
+      // If no input is provided, fall back to default
+      if (accountIdInput.value.length === 0) {
+        this.state.accountId = CONFIG.accountId;
+      } else {
+        this.state.accountId = accountIdInput.value;
+      }
+
+      this.updatePayments(this.state.accountId);
     });
   }
 
