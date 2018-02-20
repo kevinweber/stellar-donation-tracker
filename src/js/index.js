@@ -13,7 +13,8 @@ const {
   wire,
 } = window.hyperHTML;
 
-const server = new Server(CONFIG.serverUrl);
+const SERVER = new Server(CONFIG.serverUrl);
+const STREAM_MANAGER = new PaymentsManager(SERVER);
 
 /**
  * Display amount of Lumens allocated
@@ -34,9 +35,11 @@ const board2 = document.querySelector('[data-id="board-2"]');
 
 class DonationPage {
   constructor() {
-    this.streamManager = new PaymentsManager(server);
+    // Use `CONFIG` by as the default state but be aware that the state can change
+    this.state = CONFIG;
 
     this.updatePayments();
+    this.updateInput();
     this.updateSummary();
   }
 
@@ -46,7 +49,7 @@ class DonationPage {
   handleIncomingTransaction(response) {
     response.transaction().then((responseData) => {
       const amount = parseFloat(response.amount).toFixed(2);
-      const isEnough = amount >= CONFIG.minimumAmount;
+      const isEnough = amount >= this.state.minimumAmount;
 
       if (!isEnough || isNaN(amount)) {
         return;
@@ -68,14 +71,14 @@ class DonationPage {
   }
 
   updatePayments() {
-    this.streamManager.updateStream(CONFIG.accountId, this.handleIncomingTransaction.bind(this));
+    STREAM_MANAGER.updateStream(this.state.accountId, this.handleIncomingTransaction.bind(this));
   }
 
   /**
    * This represents the text displayed at the very top of the page.
    */
-  updateSummary(accountId = CONFIG.accountId) {
-    server.loadAccount(accountId)
+  updateSummary(accountId = this.state.accountId) {
+    SERVER.loadAccount(accountId)
       .then((response) => {
         const balance = parseFloat(response.balances[0].balance).toFixed(2);
         bind(amount)`
@@ -97,7 +100,7 @@ class DonationPage {
     });
 
     // Use top 5 sorted entries
-    boards.first = sortedBoards.slice(0, CONFIG.topList);
+    boards.first = sortedBoards.slice(0, this.state.topList);
 
     // Save indices for the next step to save time
     const firstIndices = boards.first.map((entry) => {
