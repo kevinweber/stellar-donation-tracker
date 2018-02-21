@@ -8,8 +8,8 @@ class BoardItem extends React.Component {
 
     return (
       <li>
-        <span className="memo">${this.props.meta.memo}</span>
-        <span className="contribution">${this.props.meta.amount} XLM – ${this.props.meta.date}</span>
+        <span className="memo">{this.props.meta.memo}</span>
+        <span className="contribution">{this.props.meta.amount} XLM – {this.props.meta.date}</span>
       </li>
     );
   }
