@@ -29,6 +29,14 @@ class Board extends React.Component {
 
 export default class DonationBoards extends React.Component {
   render() {
+    if (this.props.payments.length === 0) {
+      return (
+        <section>
+         <span className="memo">Loading...</span>
+       </section>
+     );
+    }
+
     return [
       <section>
         <Board className="toplist" items={this.props.payments} />
@@ -39,7 +47,6 @@ export default class DonationBoards extends React.Component {
     ];
   }
 
-  //
   // resetBoards() {
   //   this.state.boards = Object.assign({}, BOARDS_INITIAL);
   //
@@ -76,36 +83,5 @@ export default class DonationBoards extends React.Component {
   //       this.state.boards.second.push(entry);
   //     }
   //   });
-  // }
-  //
-  // addEntry(entry) {
-  //   this.state.boards.all.unshift(entry);
-  // }
-  //
-  // updateBoards() {
-  //   this.arrangeBoards();
-  //
-  //   render(<Board>{this.state.boards.first}</Board>, board1);
-  //   // bind(board1)`
-  //   // ${
-  //   //   this.state.boards.first.map((item) => {
-  //   //     return wire(item)`
-  //   //       <li>
-  //   //         <span class="memo">${item.memo}</span>
-  //   //         <span class="contribution">${item.amount} XLM – ${item.date}</span>
-  //   //       </li>`;
-  //   //   }
-  //   // )}`;
-  //
-  //   bind(board2)`
-  //   ${
-  //     this.state.boards.second.map((item) => {
-  //       return wire(item)`
-  //         <li>
-  //           <span class="memo">${item.memo}</span>
-  //           <span class="contribution">${item.amount} XLM – ${item.date}</span>
-  //         </li>`;
-  //     }
-  //   )}`;
   // }
 }
