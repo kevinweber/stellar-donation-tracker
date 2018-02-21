@@ -28,6 +28,35 @@ class Board extends React.Component {
 }
 
 export default class DonationBoards extends React.Component {
+  getArrangedItems() {
+    const arrangement = {
+      board1: [],
+      board2: [],
+    };
+
+    // Sort boards by amount
+    const sortedItems = this.props.payments.slice(0).sort(function (a, b) {
+      return b.amount - a.amount;
+    });
+
+    // Use top sorted entries
+    arrangement.board1 = sortedItems.slice(0, this.props.topListLength);
+
+    // Save indices for the next step to save time
+    const firstIndices = arrangement.board1.map((entry) => {
+      return entry.id;
+    });
+
+    // Use unsorted entries for second board
+    this.props.payments.forEach((entry) => {
+      if (firstIndices.indexOf(entry.id) === -1) {
+        arrangement.board2.push(entry);
+      }
+    });
+
+    return arrangement;
+  }
+
   render() {
     if (this.props.payments.length === 0) {
       return (
@@ -37,51 +66,15 @@ export default class DonationBoards extends React.Component {
      );
     }
 
+    const arrangedItems = this.getArrangedItems();
+
     return [
       <section>
-        <Board className="toplist" items={this.props.payments} />
+        <Board className="toplist" items={arrangedItems.board1} />
       </section>,
       <section>
-        <Board className="longlist" items={this.props.payments} />
+        <Board className="longlist" items={arrangedItems.board2} />
       </section>,
     ];
   }
-
-  // resetBoards() {
-  //   this.state.boards = Object.assign({}, BOARDS_INITIAL);
-  //
-  //   // bind(board1)`
-  //   // <span class="memo">Loading...</span>`;
-  //
-  //   bind(board2);
-  // }
-  //
-  // arrangeBoards() {
-  //   // Limit maximum to 99
-  //   this.state.boards.all.length = 99;
-  //
-  //   // Reset individual boards
-  //   this.state.boards.first = [];
-  //   this.state.boards.second = [];
-  //
-  //   // Sort boards by amount
-  //   const sortedBoards = this.state.boards.all.slice(0).sort(function (a, b) {
-  //     return b.amount - a.amount;
-  //   });
-  //
-  //   // Use top 5 sorted entries
-  //   this.state.boards.first = sortedBoards.slice(0, this.state.topList);
-  //
-  //   // Save indices for the next step to save time
-  //   const firstIndices = this.state.boards.first.map((entry) => {
-  //     return entry.id;
-  //   });
-  //
-  //   // Use unsorted entries for second board
-  //   this.state.boards.all.forEach((entry) => {
-  //     if (firstIndices.indexOf(entry.id) === -1) {
-  //       this.state.boards.second.push(entry);
-  //     }
-  //   });
-  // }
 }

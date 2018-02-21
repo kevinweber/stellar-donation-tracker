@@ -37,7 +37,7 @@ Open `/dist/index.html` in your browser to see the site.
 
 You can replace the default Stellar account ID with your own in `./src/js/config.js`.
 
-To use Stellar's Testnet instead of the live network, go to `./src/js/index.js` and replace...
+To use Stellar's Testnet instead of the live network, go to `./src/js/pages/donations/index.js` and replace...
 
 ```
 import {
@@ -65,10 +65,10 @@ npm run production
 
 ## TODO / Future Features
 
-- [ ] Provide input field to list donations for any account ID
+- [x] Provide input field to list donations for any account ID
 - [ ] Support displaying donations based on GET parameter for account address
 - [ ] Update Webpack to latest version
-- [ ] Replace hyperHTML with React or Preact
+- [x] Replace hyperHTML with React
 - [ ] Provide alternative view for addresses on Stellar's [Testnet](https://www.stellar.org/developers/guides/concepts/test-net.html)
 - [ ] Exclude or mark payments from inflation pool
 - [ ] Add charts that visualize donation metrics, such as payments received per week, top donors and repeated payments from a single account

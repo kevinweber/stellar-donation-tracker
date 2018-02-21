@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   render,
 } from 'react-dom';
@@ -11,8 +12,8 @@ import {
 import {
   Server,
 } from 'stellar-sdk';
-import PaymentsManager from '../../stellar-payments';
 
+import PaymentsManager from '../../stellar-payments';
 import DonationBoards from './boards';
 
 const SERVER = new Server(CONFIG.serverUrl);
@@ -40,7 +41,7 @@ export default class DonationPage extends React.Component {
       accountSummary: {
         balance: '',
       },
-      config: CONFIG,
+      config: Object.assign({}, CONFIG),
       payments: [],
     };
 
@@ -129,7 +130,7 @@ export default class DonationPage extends React.Component {
           <input type="text" placeholder={this.state.config.accountId} onChange={this.handleInput} />
         </div>
       </header>,
-      <DonationBoards payments={this.state.payments} />
+      <DonationBoards topListLength={this.state.config.topListLength} payments={this.state.payments} />
     ];
   }
 }
