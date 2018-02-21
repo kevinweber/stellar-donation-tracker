@@ -13,12 +13,21 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
+      "jsx": true,
       "modules": true
     }
   },
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "no-console": "off",
-    "no-unused-vars": ["warn"],
+    "no-unused-vars": ["warn", { "varsIgnorePattern": "h" }],
     "semi": 2
+  },
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
   }
 }

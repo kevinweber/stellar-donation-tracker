@@ -96,6 +96,16 @@ li span {
   }
 }
 
+input {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  resize: none;
+  -moz-box-shadow: none;
+  -webkit-touch-callout: none;
+}
+
 .toplist {
   counter-reset: rank;
 
