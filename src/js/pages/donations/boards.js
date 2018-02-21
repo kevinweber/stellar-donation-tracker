@@ -18,7 +18,7 @@ class BoardItem extends React.Component {
 class Board extends React.Component {
   render() {
     return (
-      <ul>
+      <ul className={this.props.className}>
         {this.props.items.map(function(item){
           return <BoardItem meta={item} />;
         })}
