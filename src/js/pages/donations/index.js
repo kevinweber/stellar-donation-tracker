@@ -43,15 +43,21 @@ export default class DonationPage extends React.Component {
       config: CONFIG,
       payments: [],
     };
+
+    this.handleInput = this.handleInput.bind(this);
   }
 
   componentDidMount() {
     this.updateStream();
-    this.updateSummary();
   }
 
   updateStream() {
-    STREAM_MANAGER.updateStream(this.state.config.accountId, this.handleIncomingTransaction.bind(this));
+    const newState = this.state;
+    newState.payments = [];
+    this.setState(newState, () => {
+      STREAM_MANAGER.updateStream(this.state.config.accountId, this.handleIncomingTransaction.bind(this));
+      this.updateSummary();
+    });
   }
 
   /**
@@ -93,6 +99,21 @@ export default class DonationPage extends React.Component {
     });
   }
 
+  handleInput(event) {
+    const newState = this.state;
+
+    if (event.target.value.length === 0) {
+      newState.config.accountId = CONFIG.accountId;
+    } else {
+      newState.config.accountId = event.target.value;
+    }
+
+    this.setState(newState, () => {
+      this.updateStream();
+      this.updateSummary();
+    });
+  }
+
   render() {
     return [
       <header>
@@ -105,56 +126,10 @@ export default class DonationPage extends React.Component {
           <p>Stellar Donation Tracker</p>
           <p>This page demonstrates the tool available <a href="https://github.com/kevinweber/stellar-donation-tracker">on Github</a> <img className="icon-github" src="assets/img/github.svg" />.</p>
           <p>The current version 1 lists the highest and most recent payments sent to a Stellar account in real-time, including the <code>Memo text</code> of a transaction, if provided.</p>
-          <input data-account-id="" type="text" />
+          <input type="text" placeholder={this.state.config.accountId} onChange={this.handleInput} />
         </div>
-        <span data-id="contribution"></span>
       </header>,
       <DonationBoards payments={this.state.payments} />
     ];
   }
 }
-
-// /**
-//  * Display amount of Lumens allocated
-//  */
-// const amount = document.querySelector('[data-id="contribution"]');
-//
-// const BOARD_MANAGER = new DonationBoards();
-//
-// const accountIdInput = document.querySelector('input[data-account-id]');
-//
-// export default class DonationPage {
-//   constructor() {
-//     // Use `CONFIG` by as the default state but be aware that the state can change
-//     this.state = Object.assign({}, CONFIG);
-//
-//     this.updatePayments();
-//     this.updateInput();
-//     this.updateSummary();
-//   }
-//
-//
-//   updatePayments() {
-//     BOARD_MANAGER.resetBoards();
-//     STREAM_MANAGER.updateStream(this.state.accountId, this.handleIncomingTransaction.bind(this));
-//   }
-//
-//   /**
-//    * Input field where user can insert any account ID
-//    */
-//   updateInput(accountId = this.state.accountId) {
-//     accountIdInput.setAttribute('placeholder', accountId);
-//     accountIdInput.addEventListener('input', () => {
-//       // If no input is provided, fall back to default
-//       if (accountIdInput.value.length === 0) {
-//         this.state.accountId = CONFIG.accountId;
-//       } else {
-//         this.state.accountId = accountIdInput.value;
-//       }
-//
-//       this.updatePayments(this.state.accountId);
-//     });
-//   }
-//
-
-// }
