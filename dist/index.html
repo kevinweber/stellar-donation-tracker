@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="assets/css/bundle.css">
     <link href="//fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 
-    <!--
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-    -->
     <script src="assets/js/bundle.js" charset="utf-8" defer></script>
   </head>
   <body>
@@ -80,26 +76,6 @@
  ██    ░█
 -->
 
-    <header>
-      <p class="teaser" data-id="contribution"></p>
-      <h1>lumens <img src="assets/img/not-for-profit.svg" onerror="this.src='assets/img/not-for-profit.png'" style="height:2.5em;margin-bottom:-0.9em" alt=""> space</h1>
-      <div class="info">
-        <p>Stellar Donation Tracker</p>
-        <p>This page demonstrates the tool available <a href="https://github.com/kevinweber/stellar-donation-tracker">on Github</a> <img class="icon-github" src="assets/img/github.svg">.</p>
-        <p>The current version 1 lists the highest and most recent payments sent to a Stellar account in real-time, including the <code>Memo text</code> of a transaction, if provided.</p>
-        <input data-account-id="" type="text">
-      </div>
-      <span data-id="contribution"></span>
-    </header>
-
-    <div data-react-root="donation-boards"></div>
-
-    <section>
-      <ul class="toplist" data-id="board"></ul>
-    </section>
-
-    <section>
-      <ul class="longlist" data-id="board-2"></ul>
-    </section>
+    <div data-root="react"></div>
   </body>
 </html>

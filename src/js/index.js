@@ -5,9 +5,6 @@ import {
   render,
 } from 'react-dom';
 
-import DonationPage from './pages/donations/page';
-import DonationBoards from './pages/donations/boards';
+import DonationPage from './pages/donations';
 
-new DonationPage();
-
-render(<DonationBoards />, document.querySelector('[data-react-root="donation-boards"]'));
+render(<DonationPage />, document.querySelector('[data-root="react"]'));

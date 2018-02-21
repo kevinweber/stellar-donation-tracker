@@ -1,39 +1,26 @@
 import React from 'react';
-import {
-  render,
-} from 'react-dom';
 
+class BoardItem extends React.Component {
+  render() {
+    if (!this.props.meta) {
+      return;
+    }
 
-const BOARDS_INITIAL = {
-  all: [],
-  first: [],
-  second: [],
-};
-// const board1 = document.querySelector('[data-id="board"]');
-// const board2 = document.querySelector('[data-id="board-2"]');
-
-// class BoardItem extends React.Component {
-//   render() {
-//     if (!this.props.meta) {
-//       return;
-//     }
-//
-//     return (
-//       <li>
-//         <span className="memo">${this.props.meta.memo}</span>
-//         <span className="contribution">${this.props.meta.amount} XLM – ${this.props.meta.date}</span>
-//       </li>
-//     );
-//   }
-// }
+    return (
+      <li>
+        <span className="memo">${this.props.meta.memo}</span>
+        <span className="contribution">${this.props.meta.amount} XLM – ${this.props.meta.date}</span>
+      </li>
+    );
+  }
+}
 
 class Board extends React.Component {
   render() {
     return (
       <ul>
         {this.props.items.map(function(item){
-          // return <BoardItem meta={item} />;
-          return 'test';
+          return <BoardItem meta={item} />;
         })}
       </ul>
     );
@@ -41,25 +28,15 @@ class Board extends React.Component {
 }
 
 export default class DonationBoards extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      boards: Object.assign({}, BOARDS_INITIAL),
-    };
-  //
-  //   return {
-  //     addEntry: this.addEntry.bind(this),
-  //     updateBoards: this.updateBoards.bind(this),
-  //     resetBoards: this.resetBoards.bind(this),
-  //   };
-  }
-
   render() {
-    return (
-      <Board className="toplist" items={this.state.boards.first} />,
-      <Board className="longlist" items={this.state.boards.second} />
-    );
+    return [
+      <section>
+        <Board className="toplist" items={this.props.payments} />
+      </section>,
+      <section>
+        <Board className="longlist" items={this.props.payments} />
+      </section>,
+    ];
   }
 
   //
