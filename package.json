@@ -28,10 +28,8 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "promise-polyfill": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "stellar-sdk": "^0.8.0",
-    "whatwg-fetch": "^2.0.3"
+    "stellar-sdk": "^0.8.0"
   }
 }

@@ -1,95 +1,134 @@
-const {
-  bind,
-  wire,
-} = window.hyperHTML;
+import React from 'react';
+import {
+  render,
+} from 'react-dom';
+
 
 const BOARDS_INITIAL = {
   all: [],
   first: [],
   second: [],
 };
+// const board1 = document.querySelector('[data-id="board"]');
+// const board2 = document.querySelector('[data-id="board-2"]');
 
-const board1 = document.querySelector('[data-id="board"]');
-const board2 = document.querySelector('[data-id="board-2"]');
+// class BoardItem extends React.Component {
+//   render() {
+//     if (!this.props.meta) {
+//       return;
+//     }
+//
+//     return (
+//       <li>
+//         <span className="memo">${this.props.meta.memo}</span>
+//         <span className="contribution">${this.props.meta.amount} XLM – ${this.props.meta.date}</span>
+//       </li>
+//     );
+//   }
+// }
 
-export default class DonationBoards {
+class Board extends React.Component {
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(function(item){
+          // return <BoardItem meta={item} />;
+          return 'test';
+        })}
+      </ul>
+    );
+  }
+}
+
+export default class DonationBoards extends React.Component {
   constructor() {
+    super();
+
     this.state = {
       boards: Object.assign({}, BOARDS_INITIAL),
     };
-
-    return {
-      addEntry: this.addEntry.bind(this),
-      updateBoards: this.updateBoards.bind(this),
-      resetBoards: this.resetBoards.bind(this),
-    };
+  //
+  //   return {
+  //     addEntry: this.addEntry.bind(this),
+  //     updateBoards: this.updateBoards.bind(this),
+  //     resetBoards: this.resetBoards.bind(this),
+  //   };
   }
 
-  resetBoards() {
-    this.state.boards = Object.assign({}, BOARDS_INITIAL);
-
-    bind(board1)`
-    <span class="memo">Loading...</span>`;
-
-    bind(board2);
+  render() {
+    return (
+      <Board className="toplist" items={this.state.boards.first} />,
+      <Board className="longlist" items={this.state.boards.second} />
+    );
   }
 
-  arrangeBoards() {
-    // Limit maximum to 99
-    this.state.boards.all.length = 99;
-
-    // Reset individual boards
-    this.state.boards.first = [];
-    this.state.boards.second = [];
-
-    // Sort boards by amount
-    const sortedBoards = this.state.boards.all.slice(0).sort(function (a, b) {
-      return b.amount - a.amount;
-    });
-
-    // Use top 5 sorted entries
-    this.state.boards.first = sortedBoards.slice(0, this.state.topList);
-
-    // Save indices for the next step to save time
-    const firstIndices = this.state.boards.first.map((entry) => {
-      return entry.id;
-    });
-
-    // Use unsorted entries for second board
-    this.state.boards.all.forEach((entry) => {
-      if (firstIndices.indexOf(entry.id) === -1) {
-        this.state.boards.second.push(entry);
-      }
-    });
-  }
-
-  addEntry(entry) {
-    this.state.boards.all.unshift(entry);
-  }
-
-  updateBoards() {
-    this.arrangeBoards();
-
-    bind(board1)`
-    ${
-      this.state.boards.first.map((item) => {
-        return wire(item)`
-          <li>
-            <span class="memo">${item.memo}</span>
-            <span class="contribution">${item.amount} XLM – ${item.date}</span>
-          </li>`;
-      }
-    )}`;
-
-    bind(board2)`
-    ${
-      this.state.boards.second.map((item) => {
-        return wire(item)`
-          <li>
-            <span class="memo">${item.memo}</span>
-            <span class="contribution">${item.amount} XLM – ${item.date}</span>
-          </li>`;
-      }
-    )}`;
-  }
+  //
+  // resetBoards() {
+  //   this.state.boards = Object.assign({}, BOARDS_INITIAL);
+  //
+  //   // bind(board1)`
+  //   // <span class="memo">Loading...</span>`;
+  //
+  //   bind(board2);
+  // }
+  //
+  // arrangeBoards() {
+  //   // Limit maximum to 99
+  //   this.state.boards.all.length = 99;
+  //
+  //   // Reset individual boards
+  //   this.state.boards.first = [];
+  //   this.state.boards.second = [];
+  //
+  //   // Sort boards by amount
+  //   const sortedBoards = this.state.boards.all.slice(0).sort(function (a, b) {
+  //     return b.amount - a.amount;
+  //   });
+  //
+  //   // Use top 5 sorted entries
+  //   this.state.boards.first = sortedBoards.slice(0, this.state.topList);
+  //
+  //   // Save indices for the next step to save time
+  //   const firstIndices = this.state.boards.first.map((entry) => {
+  //     return entry.id;
+  //   });
+  //
+  //   // Use unsorted entries for second board
+  //   this.state.boards.all.forEach((entry) => {
+  //     if (firstIndices.indexOf(entry.id) === -1) {
+  //       this.state.boards.second.push(entry);
+  //     }
+  //   });
+  // }
+  //
+  // addEntry(entry) {
+  //   this.state.boards.all.unshift(entry);
+  // }
+  //
+  // updateBoards() {
+  //   this.arrangeBoards();
+  //
+  //   render(<Board>{this.state.boards.first}</Board>, board1);
+  //   // bind(board1)`
+  //   // ${
+  //   //   this.state.boards.first.map((item) => {
+  //   //     return wire(item)`
+  //   //       <li>
+  //   //         <span class="memo">${item.memo}</span>
+  //   //         <span class="contribution">${item.amount} XLM – ${item.date}</span>
+  //   //       </li>`;
+  //   //   }
+  //   // )}`;
+  //
+  //   bind(board2)`
+  //   ${
+  //     this.state.boards.second.map((item) => {
+  //       return wire(item)`
+  //         <li>
+  //           <span class="memo">${item.memo}</span>
+  //           <span class="contribution">${item.amount} XLM – ${item.date}</span>
+  //         </li>`;
+  //     }
+  //   )}`;
+  // }
 }

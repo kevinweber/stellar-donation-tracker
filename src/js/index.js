@@ -1,4 +1,13 @@
 import '../scss/index.scss';
-import DonationPage from './pages/donations';
+
+import React from 'react';
+import {
+  render,
+} from 'react-dom';
+
+import DonationPage from './pages/donations/page';
+import DonationBoards from './pages/donations/boards';
 
 new DonationPage();
+
+render(<DonationBoards />, document.querySelector('[data-react-root="donation-boards"]'));

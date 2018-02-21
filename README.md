@@ -6,7 +6,7 @@ The Stellar Donation Tracker lists donations sent to a Stellar account in real-t
 
 In order to receive donations for your product or service, [create a Stellar account](https://www.stellar.org/developers/guides/get-started/create-account.html) and share its public key with potential contributors. Then they can donate [lumens](https://www.stellar.org/lumens/) to that address.
 
-You can use this tool to publicly list all donations received. The code is kept simple to make it easy for you to customize it to your needs. The Stellar Donation Tracker uses Stellar's [JavaScript API](https://www.stellar.org/developers/js-stellar-sdk/reference/).
+You can use this tool to publicly list all donations received. The Stellar Donation Tracker uses Stellar's [JavaScript API](https://www.stellar.org/developers/js-stellar-sdk/reference/).
 
 More features are in development. Check out the "TODO" list below and see how you can contribute.
 
