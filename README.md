@@ -65,11 +65,12 @@ npm run production
 
 ## TODO / Future Features
 
-- [x] Provide input field to list donations for any account ID
-- [ ] Support displaying donations based on GET parameter for account address
-- [ ] Update Webpack to latest version
 - [x] Replace hyperHTML with React
+- [x] Provide input field to list donations for any account ID
+- [ ] Catch invalid account IDs
+- [ ] Support displaying donations based on GET parameter for account address
 - [ ] Provide alternative view for addresses on Stellar's [Testnet](https://www.stellar.org/developers/guides/concepts/test-net.html)
+- [ ] Update Webpack to latest version
 - [ ] Exclude or mark payments from inflation pool
 - [ ] Add charts that visualize donation metrics, such as payments received per week, top donors and repeated payments from a single account
 - [ ] Build an integration that allows users to easily donate in Lumens on the page where this tool is used
