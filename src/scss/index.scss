@@ -97,13 +97,19 @@ li span {
 }
 
 input {
-  background: transparent;
-  border: none;
+  background: $_bg-white;
+  border: 1px solid $_color-grey;
   box-shadow: none;
   outline: none;
   resize: none;
+  padding: 1rem;
   -moz-box-shadow: none;
   -webkit-touch-callout: none;
+  width: 100%;
+
+  &:focus {
+    border-color: $_color-black;
+  }
 }
 
 .toplist {
