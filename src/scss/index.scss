@@ -45,12 +45,20 @@ section {
   padding: 1.3rem $_xPadding 1.1rem;
   width: calc(100% + #{(2 * $_xPadding)});
 
-  p:first-of-type {
+  .highlight {
     font-weight: bold;
   }
 
   p + p {
     padding-top: 0.5rem;
+  }
+
+  p + .highlight {
+    padding-top: 1rem;
+  }
+
+  p + input {
+    margin-top: 0.5rem;
   }
 }
 

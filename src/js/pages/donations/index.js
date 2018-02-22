@@ -140,9 +140,10 @@ export default class DonationPage extends React.Component {
           marginBottom: '-0.9em',
         }} alt="" /> space</h1>
         <div className="info">
-          <p>Stellar Donation Tracker</p>
+          <p className="highlight">Stellar Donation Tracker</p>
           <p>This page demonstrates the tool available <a href="https://github.com/kevinweber/stellar-donation-tracker">on Github</a> <img className="icon-github" src="assets/img/github.svg" />.</p>
           <p>It lists the highest and most recent payments sent to a Stellar account in real-time, including the <code>Memo text</code> of a transaction, if provided.</p>
+          <p className="highlight">Paste any Stellar account ID below to see the latest payments:</p>
           <input type="text" placeholder={this.state.config.accountId} onChange={this.handleInput} onFocus={this.handleFocus} />
         </div>
       </header>,
