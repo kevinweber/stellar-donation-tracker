@@ -16,6 +16,10 @@ import DonationBoards from './boards';
 const SERVER = new Server(CONFIG.serverUrl);
 const STREAM_MANAGER = new PaymentsManager(SERVER);
 
+function selectInputText(inputElement) {
+  inputElement.setSelectionRange(0, inputElement.value.length);
+}
+
 class Teaser extends React.Component {
   render() {
     if (!this.props.balance) {
@@ -47,6 +51,7 @@ export default class DonationPage extends React.Component {
     };
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   componentDidMount() {
@@ -116,6 +121,16 @@ export default class DonationPage extends React.Component {
     });
   }
 
+  handleFocus(event) {
+    const valueLength = event.target.value.length;
+
+    if (valueLength === 0) {
+      event.target.value = CONFIG.accountId;
+    }
+
+    selectInputText(event.target);
+  }
+
   render() {
     return [
       <header key="1">
@@ -127,8 +142,8 @@ export default class DonationPage extends React.Component {
         <div className="info">
           <p>Stellar Donation Tracker</p>
           <p>This page demonstrates the tool available <a href="https://github.com/kevinweber/stellar-donation-tracker">on Github</a> <img className="icon-github" src="assets/img/github.svg" />.</p>
-          <p>The current version 1 lists the highest and most recent payments sent to a Stellar account in real-time, including the <code>Memo text</code> of a transaction, if provided.</p>
-          <input type="text" placeholder={this.state.config.accountId} onChange={this.handleInput} />
+          <p>It lists the highest and most recent payments sent to a Stellar account in real-time, including the <code>Memo text</code> of a transaction, if provided.</p>
+          <input type="text" placeholder={this.state.config.accountId} onChange={this.handleInput} onFocus={this.handleFocus} />
         </div>
       </header>,
       <DonationBoards key="2" topListLength={this.state.config.topListLength} payments={this.state.payments} />
