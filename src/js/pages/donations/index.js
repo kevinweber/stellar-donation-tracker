@@ -1,8 +1,5 @@
 import React from 'react';
-
-import {
-  render,
-} from 'react-dom';
+import PropTypes from 'prop-types';
 
 import {
   live as CONFIG,
@@ -32,6 +29,10 @@ class Teaser extends React.Component {
     );
   }
 }
+
+Teaser.propTypes = {
+  balance: PropTypes.string,
+};
 
 export default class DonationPage extends React.Component {
   constructor() {
@@ -117,7 +118,7 @@ export default class DonationPage extends React.Component {
 
   render() {
     return [
-      <header>
+      <header key="1">
         <Teaser balance={this.state.accountSummary.balance} />
         <h1>lumens <img src="assets/img/not-for-profit.svg" style={{
           height: '2.5em',
@@ -130,7 +131,7 @@ export default class DonationPage extends React.Component {
           <input type="text" placeholder={this.state.config.accountId} onChange={this.handleInput} />
         </div>
       </header>,
-      <DonationBoards topListLength={this.state.config.topListLength} payments={this.state.payments} />
+      <DonationBoards key="2" topListLength={this.state.config.topListLength} payments={this.state.payments} />
     ];
   }
 }

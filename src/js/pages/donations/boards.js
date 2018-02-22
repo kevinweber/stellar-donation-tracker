@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class BoardItem extends React.Component {
   render() {
@@ -15,17 +16,26 @@ class BoardItem extends React.Component {
   }
 }
 
+BoardItem.propTypes = {
+  meta: PropTypes.object,
+};
+
 class Board extends React.Component {
   render() {
     return (
       <ul className={this.props.className}>
-        {this.props.items.map(function(item){
-          return <BoardItem meta={item} />;
+        {this.props.items.map(function(item, i){
+          return <BoardItem meta={item} key={i} />;
         })}
       </ul>
     );
   }
 }
+
+Board.propTypes = {
+  className: PropTypes.string,
+  items: PropTypes.array,
+};
 
 export default class DonationBoards extends React.Component {
   getArrangedItems() {
@@ -68,13 +78,16 @@ export default class DonationBoards extends React.Component {
 
     const arrangedItems = this.getArrangedItems();
 
-    return [
+    return (
       <section>
         <Board className="toplist" items={arrangedItems.board1} />
-      </section>,
-      <section>
         <Board className="longlist" items={arrangedItems.board2} />
-      </section>,
-    ];
+      </section>
+    );
   }
 }
+
+DonationBoards.propTypes = {
+  payments: PropTypes.array,
+  topListLength: PropTypes.number,
+};
