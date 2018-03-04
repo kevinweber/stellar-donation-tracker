@@ -67,13 +67,16 @@ npm run production
 
 - [x] Replace hyperHTML with React
 - [x] Provide input field to list donations for any account ID
-- [ ] Catch invalid account IDs
 - [ ] Support displaying donations based on GET parameter for account address
+- [ ] Catch invalid account IDs
 - [ ] Provide alternative view for addresses on Stellar's [Testnet](https://www.stellar.org/developers/guides/concepts/test-net.html)
 - [ ] Update Webpack to latest version
+- [ ] Create a widget that users can easily customize and drop into their website. The widget would display the amount of money which has been donated to an account (deposits are assumed to be donations) and the current balance of an account.
+- [ ] Widget feature: Allow setting fundraising goals and display a graph that shows the fundraising progress accordingly. The progress can be displayed in a progress bar or using a [gauge](https://developers.google.com/chart/interactive/docs/gallery/gauge).
 - [ ] Exclude or mark payments from inflation pool
 - [ ] Add charts that visualize donation metrics, such as payments received per week, top donors and repeated payments from a single account
 - [ ] Build an integration that allows users to easily donate in Lumens on the page where this tool is used
+- [ ] Support for more currencies (e.g. BTC and ETH)
 - [ ] Expand this tool into a platform where organizations can receive donations so they don't have to create and manage their own tool. Think of it as a Kickstarter platform on the Stellar network.
 
 ## How to contribute
