@@ -1,3 +1,5 @@
+/*eslint no-irregular-whitespace: 0 */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
