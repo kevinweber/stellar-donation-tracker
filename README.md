@@ -2,7 +2,7 @@
 
 The Stellar Donation Tracker lists donations sent to a Stellar account in real-time. It provides a simple interface to list the highest and most recent payments including the `Memo text` of a transaction, if provided.
 
-**Demo: [lumens.space](https://lumens.space/)**
+**Demo: [lumens.space](https://kevinweber.github.io/stellar-donation-tracker/dist/)**
 
 In order to receive donations for your product or service, [create a Stellar account](https://www.stellar.org/developers/guides/get-started/create-account.html) and share its public key with potential contributors. Then they can donate [lumens](https://www.stellar.org/lumens/) to that address.
 
@@ -85,4 +85,4 @@ Here are ideas how you can contribute to this project:
 
 - Clone this repository and submit a pull request that fixes a bug or adds a new feature
 - Create issue tickets for potential improvements
-- Donate Lumens to `GDZVGNTOWHQ244N45SO4F5Y2YPBJF63ZD3T5GGHGDILENJGZIC5YZEWK` and see your donation listed on [lumens.space](https://lumens.space/)
+- Donate Lumens to `GDZVGNTOWHQ244N45SO4F5Y2YPBJF63ZD3T5GGHGDILENJGZIC5YZEWK` and see your donation listed on [lumens.space](https://kevinweber.github.io/stellar-donation-tracker/dist/)
