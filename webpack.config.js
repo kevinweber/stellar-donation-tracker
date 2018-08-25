@@ -1,6 +1,9 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const IS_PROD = (process.env.NODE_ENV === 'production');
 
 module.exports = {
+  mode: IS_PROD ? 'production' : 'development',
   entry: {
     bundle: './src/js/index.js',
     // You can add more entry points here.
@@ -33,13 +36,12 @@ module.exports = {
     }, {
       // The "?" allows you use both file formats: .css and .scss
       test: /\.s?css$/,
-      use: ExtractTextPlugin.extract({
-        use: [{
-          loader: 'css-loader'
-        }, {
-          loader: 'sass-loader'
-        }]
-      })
+      use: [{
+          loader: MiniCssExtractPlugin.loader,
+        },
+        'css-loader',
+        'sass-loader',
+      ]
     }]
   },
   resolve: {
@@ -51,6 +53,6 @@ module.exports = {
     filename: 'js/[name].js'
   },
   plugins: [
-    new ExtractTextPlugin('css/[name].css'),
-  ]
+    new MiniCssExtractPlugin('css/[name].css'),
+  ],
 };
